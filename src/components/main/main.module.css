@@ -1,0 +1,32 @@
+.content {
+	padding: 0 19px 0;
+	max-width: 880px;
+	margin: 0 auto;
+}
+
+.cards {
+	max-width: 880px;
+	margin: 0 auto;
+}
+
+.container {
+	margin: 36px auto 48px;
+	display: grid;
+	gap: 20px;
+	list-style: none;
+	padding: 0;
+	grid-template-columns: 282px;
+	justify-content: center;
+}
+
+@media screen and (min-width: 450px) {
+	.container {
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	}
+}
+
+@media screen and (min-width: 1279px) {
+	.container {
+		margin: 50px auto 66px;
+	}
+}
