@@ -1,0 +1,197 @@
+.profile {
+	display: grid;
+	justify-items: center;
+	grid-template-columns: 245px 37px;
+	grid-template-rows: 184px 39px 27px 82px;
+	margin: 0 auto;
+	max-width: 282px;
+	align-items: end;
+}
+
+.title {
+	margin: 0 0 0 35px;
+	font-weight: 500;
+	font-size: 27px;
+	line-height: 33px;
+	grid-column: 1/2;
+	grid-row: 2/3;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	max-width: 190px;
+}
+
+.subtitle {
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+	line-height: 17px;
+	font-weight: 400;
+	grid-column: 1/2;
+	grid-row: 3/4;
+	text-align: center;
+	margin-left: 34px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	max-width: 189px;
+}
+
+.button {
+	cursor: pointer;
+	padding: 0;
+	transition: opacity 0.5s ease;
+	-webkit-transition: opacity 0.5s ease;
+	background-repeat: no-repeat;
+	background-color: #000;
+}
+
+.button:hover {
+	opacity: 0.6;
+}
+
+.buttonTypeAdd {
+	background-image: url(../../../images/add_button.svg);
+	background-position: center;
+	width: 282px;
+	min-height: 50px;
+	margin: 0 auto;
+	border: 2px solid #fff;
+	grid-column: 1/2;
+	grid-row: 4/5;
+}
+
+.buttonTypeEdit {
+	background-image: url('../../../images/edit_button.svg');
+	background-size: cover;
+	width: 18px;
+	height: 18px;
+	box-sizing: border-box;
+	grid-column: 2/3;
+	grid-row: 2/3;
+	align-self: flex-end;
+	margin-bottom: 6px;
+	justify-self: start;
+	border: none;
+}
+
+.avatar {
+	min-width: 100%;
+	min-height: 100%;
+	object-fit: cover;
+}
+
+@media screen and (min-width: 767px) {
+	.profile {
+		max-width: 90%;
+		grid-template-rows: 70px 50px;
+		grid-template-columns: 14% 31% 17% 27%;
+		column-gap: 23px;
+		justify-items: flex-start;
+		margin-top: 40px;
+	}
+
+	.title {
+		grid-column: 2/3;
+		grid-row: 1/2;
+		margin: 0;
+		align-self: flex-end;
+		margin-left: 6px;
+		max-width: 217px;
+	}
+
+	.subtitle {
+		grid-column: 2/3;
+		grid-row: 2/3;
+		padding-top: 10px;
+		margin-left: 6px;
+		align-self: flex-start;
+		max-width: 217px;
+	}
+
+	.buttonTypeAdd {
+		grid-column: 4/5;
+		grid-row: 1/3;
+		width: 150px;
+		margin: 0;
+		justify-self: end;
+		align-self: center;
+		background-size: 22px 22px;
+	}
+
+	.buttonTypeEdit {
+		width: 24px;
+		height: 24px;
+		grid-column: 3/4;
+		grid-row: 1/2;
+		margin-bottom: 4px;
+	}
+
+	.avatar {
+		margin: 0;
+	}
+}
+
+.avatarEdit {
+	background-image: url(../../../images/edit_avatar.svg);
+	background-repeat: no-repeat;
+	background-color: rgba(0, 0, 0, .8);
+	background-position: center;
+	background-size: 20%;
+	opacity: 0;
+	padding: 0;
+	border: 0;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	transition: 0.3s linear;
+	position: absolute;
+	cursor: pointer;
+}
+
+.avatarEdit:hover {
+	opacity: 1;
+}
+
+.avatarContainer {
+	grid-column: 1/2;
+	grid-row: 1/3;
+	position: relative;
+	border-radius: 50%;
+	width: 120px;
+	height: 120px;
+	overflow: hidden;
+	align-self: center;
+	display: flex;
+}
+
+@media screen and (min-width: 1023px) {
+	.profile {
+		grid-template-columns: 14% 29% 14% 27%;
+	}
+}
+
+@media screen and (min-width: 1279px) {
+	.profile {
+		max-width: 880px;
+		grid-template-columns: 14% 34% 14% 30%;
+	}
+
+	.title {
+		max-width: 336px;
+		font-size: 42px;
+		line-height: 48px;
+		grid-template-columns: 302px 18px;
+	}
+
+	.subtitle {
+		font-size: 18px;
+		line-height: 22px;
+		max-width: 294px;
+	}
+
+	.buttonTypeEdit {
+		margin-bottom: 10px;
+	}
+}
