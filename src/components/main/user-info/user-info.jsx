@@ -5,8 +5,11 @@ import EditAvatarModal from '../../edit-avatar-modal/edit-avatar-modal';
 import EditProfileModal from '../../edit-profile-modal/edit-profile-modal';
 import AddCardModal from '../../add-card-modal/add-card-modal';
 import Modal from '../../modal/modal';
+import { useSelector } from 'react-redux';
 
-const UserInfo = ({ avatar, name, about}) => {
+const UserInfo = () => {
+	const user = useSelector(store => store.userData.user)
+	const { avatar, name, about} = user
 
 	const [openEditForm, setOpenEditForm] = useState(false)
 	const [openAvatarForm, setOpenAvatarForm] = useState(false)

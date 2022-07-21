@@ -1,22 +1,37 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import cardStyle from './card.module.css'
-import api from '../../../utils/api'
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Modal from '../../modal/modal';
 import CardViewModal from '../../card-view-modal/card-view-modal';
 import RemoveCardModal from '../../remove-card-modal/remove-card-modal';
+import { useDispatch, useSelector } from 'react-redux';
 
-const Card = ({ link, name, likes }) => {
+import { putLikeCard } from '../../../services/actions/card';
+
+const Card = ({ card }) => {
+	const dispatch = useDispatch();
 	const [openCardView, setOpenCardView] = useState(false);
 	const [openRemoveCardModal, setOpenRemoveCardModal] = useState(false);
-	const [isLiked, setIsLiked] = useState(false);
+	const { name, link, likes, _id } = card;
+	const user = useSelector(store => store.userData.user)
+
+	
+	const isLiked = card.likes.some(item => item._id === user._id)
 	const className = isLiked ? `${cardStyle.buttonStateActive}` : '';
 
 
-	function handleLike() {
-		setIsLiked(!isLiked);
-	}
+	/*const onDelete = useCallback((_id) => {
+		dispatch(onDeleteCard(_id))
+	}, [dispatch]);
 
+
+	function handleLikeClick() {
+		onLikeCard(_id, !isLiked)
+	}*/
+
+	const handlePutLike = () => {
+		dispatch(putLikeCard(_id, isLiked));
+	};
 
 
 	const handleOpenCardView = () => {
@@ -34,13 +49,13 @@ const Card = ({ link, name, likes }) => {
 
 	return (
 		<li className={cardStyle.card}>
-			<button className={cardStyle.remove} type="button" onClick={handleOpenRemoveCardModal}></button>
+			{card.owner._id !== user._id ? '' : (<button className={cardStyle.remove} type="button"></button>)}
 			<img src={link} className={cardStyle.pic} alt={name} onClick={handleOpenCardView} />
 			<div className={cardStyle.description}>
 				<h2 className={cardStyle.title}>{name}</h2>
 				<div className={cardStyle.likes}>
-					<button className={`${cardStyle.button} ${className}`} onClick={handleLike}></button>
-					<p className={cardStyle.countLikes}>{likes}</p>
+					<button className={`${cardStyle.button} ${className}`} onClick={handlePutLike}></button>
+					<p className={cardStyle.countLikes}>{likes.length}</p>
 				</div>
 			</div>
 			{
