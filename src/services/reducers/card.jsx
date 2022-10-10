@@ -24,8 +24,12 @@ const cardsInitialState = {
 		link: '',
 		likes: [],
 	},
+	addCardSuccess: false,
 	addCardRequest: false,
 	addCardFailed: false,
+  removeCardSuccess: false,
+  removeRequest: false,
+  removeFailed: false,
 };
 
 export const cardsReducer = (state = cardsInitialState, action) => {
@@ -86,15 +90,17 @@ export const cardsReducer = (state = cardsInitialState, action) => {
 		case DELETE_CARD_REQUEST: {
 			return {
 				...state,
-				cardsFailed: false,
-				cardsRequest: true
+        removeCardSuccess: false,
+        removeRequest: true,
+        removeFailed: false,
 			};
 		}
 		case DELETE_CARD_FAILED: {
 			return {
 				...state,
-				cardsFailed: true,
-				cardsRequest: false
+        removeCardSuccess: false,
+        removeRequest: false,
+        removeFailed: true,
 			};
 		}
 		case DELETE_CARD_SUCCESS: {
@@ -105,8 +111,9 @@ export const cardsReducer = (state = cardsInitialState, action) => {
 						return card._id !== action._id;
 					}
 				),
-				cardsRequest: false,
-				cardsFailed: false
+        removeCardSuccess: true,
+        removeRequest: false,
+        removeFailed: false,
 			};
 		}
 		case ADD_CARD_FORM_SET_VALUE: {
@@ -121,8 +128,9 @@ export const cardsReducer = (state = cardsInitialState, action) => {
 		case ADD_CARD_FORM_SUBMIT: {
 			return {
 				...state,
-				addCardRequest: true,
-				addCardFailed: false
+        addCardSuccess: false,
+        addCardRequest: true,
+        addCardFailed: false,
 			}
 		}
 		case ADD_CARD_FORM_SUBMIT_SUCCESS: {
@@ -130,16 +138,19 @@ export const cardsReducer = (state = cardsInitialState, action) => {
 				...state,
 				form: {
 					// При успешной регистрацией сбрасываем форму до исходного состояния
-					...state.form
+					...cardsInitialState.form
 				},
-					addCardRequest: false
+        addCardSuccess: true,
+        addCardRequest: false,
+        addCardFailed: false,
 			}
 		}
 		case ADD_CARD_FORM_SUBMIT_FAILED: {
 			return {
 				...state,
-				addCardRequest: false,
-				addCardFailed: true
+        addCardSuccess: false,
+        addCardRequest: false,
+        addCardFailed: true,
 			}
 		}
 		default: {

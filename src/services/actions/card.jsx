@@ -50,7 +50,7 @@ export function putLikeCard(cardId, likeStatus) {
 				dispatch({
 					type: LIKE_CARD_SUCCESS,
 					cards: res
-				});
+				})
 			})
 			.catch(() => {
 				dispatch({
@@ -70,7 +70,7 @@ export function deleteCard(cardId) {
 				dispatch({
 					type: DELETE_CARD_SUCCESS,
 					cards: res
-				});
+				})
 			})
 			.catch(() => {
 				dispatch({
@@ -96,7 +96,7 @@ export function newCard(data) {
 				dispatch({
 					type: ADD_CARD_FORM_SUBMIT_SUCCESS,
 					cards: res
-				});
+				})
 			})
 			.catch(() => {
 				dispatch({

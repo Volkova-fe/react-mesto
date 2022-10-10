@@ -8,12 +8,12 @@ import Modal from '../../modal/modal';
 import { useSelector } from 'react-redux';
 
 const UserInfo = () => {
-	const user = useSelector(store => store.userData.user)
-	const { avatar, name, about} = user
+	const user = useSelector(store => store.userData.user);
+	const { avatar, name, about} = user;
 
-	const [openEditForm, setOpenEditForm] = useState(false)
-	const [openAvatarForm, setOpenAvatarForm] = useState(false)
-	const [openAddCardForm, setOpenAddCardForm] = useState(false)
+	const [openEditForm, setOpenEditForm] = useState(false);
+	const [openAvatarForm, setOpenAvatarForm] = useState(false);
+	const [openAddCardForm, setOpenAddCardForm] = useState(false);
 
 	const handleOpenEditForm = () => {
 		setOpenEditForm(true);

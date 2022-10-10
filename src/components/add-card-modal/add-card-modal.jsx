@@ -1,5 +1,7 @@
+// eslint-disable-next-line no-unused-vars
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+// eslint-disable-next-line no-unused-vars
 import { newCard, setAddCardFormValue } from '../../services/actions/card';
 
 const AddCardModal = ({ onClickClose }) => {
@@ -7,20 +9,21 @@ const AddCardModal = ({ onClickClose }) => {
 	const {
 		name,
 		link,
-		likes
 	} = useSelector(state => state.cardsData.form)
 
-	const { cardsRequest } = useSelector(state => state.cardsData)
+	const form = useSelector(state => state.cardsData.form);
+
+  // eslint-disable-next-line no-unused-vars
+	const { cardsRequest} = useSelector(state => state.cardsData)
 
 	const onFormChange = (e) => {
 		dispatch(setAddCardFormValue(e.target.name, e.target.value))
 	}
 
 	const onFormSubmit = (e) => {
-		// Предотвращаем дефолтное поведение формы при её отправке
 		e.preventDefault();
-		// Вызываем наш thunk-экшен
-		dispatch(newCard())
+		dispatch(newCard(form))
+    onClickClose();
 	}
 
 	return (
@@ -40,7 +43,10 @@ const AddCardModal = ({ onClickClose }) => {
 							required />
 						<span className="popup__input-error" id="link_pic-error"></span>
 					</label>
-					<button className="popup__button popup__button_type_save" type="submit" id="card-button-save" disabled={cardsRequest}>Создать</button>
+					{!!cardsRequest ?
+						(<button className="popup__button popup__button_type_save" type="submit" id="card-button-save">Создать</button>)
+						: (<button className="popup__button popup__button_type_save" type="submit" id="card-button-save">Создать</button>)
+					}
 				</fieldset>
 			</form>
 		</>

@@ -61,57 +61,57 @@ export const checkResponse = res => {
 }
 
 export const getCardsData = async () => {
-	const res = await fetch(`${API.url}cards`, {
+	return await fetch(`${API.url}cards`, {
 		method: 'GET',
 		headers: {
 			authorization: '7c830fbc-53f4-4c63-a7ce-3acd53d5bb5b',
 			'Content-Type': 'application/json'
 		}
-	});
-	return checkResponse(res);
+	})
+	.then (checkResponse);
 }
 
 export const getUserInfoData = async () => {
-	const res = await fetch(`${API.url}users/me`, {
+	return await fetch(`${API.url}users/me`, {
 		method: 'GET',
 		headers: {
 			authorization: '7c830fbc-53f4-4c63-a7ce-3acd53d5bb5b',
 			'Content-Type': 'application/json'
 		}
-	});
-	return checkResponse(res);
+	})
+	.then (checkResponse);
 }
 
 export const onLikeCard = async (cardId, likeStatus) => {
-	const res = await fetch(`${API.url}cards/likes/${cardId}`, {
+	return await fetch(`${API.url}cards/likes/${cardId}`, {
 		method: likeStatus ? "DELETE" : "PUT",
 		headers: {
 			authorization: '7c830fbc-53f4-4c63-a7ce-3acd53d5bb5b',
 			'Content-Type': 'application/json'
 		}
-	});
-	return checkResponse(res);
+	})
+	.then (checkResponse);
 }
 
 export const onDeleteCard = async (cardId) => {
-	const res = await fetch(`${API.url}cards/${cardId}`, {
+	return await fetch(`${API.url}cards/${cardId}`, {
 		method: 'DELETE',
 		headers: {
 			authorization: '7c830fbc-53f4-4c63-a7ce-3acd53d5bb5b',
 			'Content-Type': 'application/json'
 		}
-	});
-	return checkResponse(res);
+	})
+	.then (checkResponse);
 }
 
 export const addNewCard = async (data) => {
-	const res = await fetch(`${API.url}cards`, {
+	return await fetch(`${API.url}cards`, {
 		method: 'POST',
 		body: JSON.stringify(data),
 		headers: {
 			authorization: '7c830fbc-53f4-4c63-a7ce-3acd53d5bb5b',
 			'Content-Type': 'application/json'
 		}
-	});
-	return checkResponse(res);
+	})
+	.then (checkResponse);
 }
